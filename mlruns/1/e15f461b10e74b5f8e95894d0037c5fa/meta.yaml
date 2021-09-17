@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/mlflow%20house%20price/mlruns/1/e15f461b10e74b5f8e95894d0037c5fa/artifacts
+end_time: 1631855061666
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: e15f461b10e74b5f8e95894d0037c5fa
+run_uuid: e15f461b10e74b5f8e95894d0037c5fa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1631855010359
+status: 3
+tags: []
+user_id: Vaibhav

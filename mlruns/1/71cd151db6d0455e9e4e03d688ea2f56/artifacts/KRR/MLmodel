@@ -1,0 +1,13 @@
+artifact_path: KRR
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    python_version: 3.8.8
+  sklearn:
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 0.24.1
+run_id: 71cd151db6d0455e9e4e03d688ea2f56
+utc_time_created: '2021-09-17 05:02:24.890467'

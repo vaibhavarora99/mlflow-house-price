@@ -1,0 +1,4 @@
+artifact_location: file:///C:/mlflow%20house%20price/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: house_price
