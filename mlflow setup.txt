@@ -1,0 +1,54 @@
+sudo apt udpdate
+sudo apt upgrade
+ TO INTSALL ANACONDA
+wget "paste link from their website and install it"
+bash Anaconda*-*-Linux-x86_64.sh
+
+or 
+
+./Anaconda*-*-Linux-x86_64.sh
+AFTER ACCEPTING LICENSE TERMS RELOAD THE SHELL USING 
+source ~/.bashrc
+AFTER THIS RUN THIS COMMAND ON YOUR TERMINAL AND YOUR ANACONDA WILLL BE ACTIVATED
+ source ~/anaconda3/bin/activate root
+ anaconda-navigator
+conda create -n mlflow_env
+conda activate mlflow_env
+conda install python
+pip install mlflow
+pip install pysftp
+sudo apt-get install postgresql postgresql-contrib postgresql-server-dev-all
+sudo -u postgres psql
+AFTER INSTALLING POSTGRESQL GO INTO IT AND CREATE A USER AND DATABASE
+CREATE DATABASE mlflow;
+CREATE USER mlflow WITH ENCRYPTED PASSWORD 'mlflow';
+GRANT ALL PRIVILEGES ON DATABASE mlflow TO mlflow;
+sudo apt install gcc 
+pip install psycopg2
+mkdir ~/mlruns 
+mlflow server --backend-store-uri postgresql://mlflow:mlflow@localhost/mlflow --default-artifact-root file:/home/your_user/mlruns -h 0.0.0.0 -p 8000
+(make sure that both psycopg2 and mlflow installed are in same path)
+FOR TRACKING PURPOSE
+vim "file name"
+add this content
+([Unit]
+Description=MLflow Tracking Server
+After=network.target
+[Service]
+Restart=on-failure
+RestartSec=30
+StandardOutput=file:/path_to_your_logging_folder/stdout.log
+StandardError=file:/path_to_your_logging_folder/stderr.log
+User=root
+ExecStart=/bin/bash -c 'PATH=/path_to_your_conda_installation/envs/mlflow_env/bin/:$PATH exec mlflow server --backend-store-uri postgresql://mlflow_user:mlflow@localhost/mlflow_db --default-artifact-root sftp://mlflow_user@<hostname_of_server>:~/mlflow/mlruns -h 0.0.0.0 -p 8000'
+[Install]
+WantedBy=multi-user.target)
+AFTER THIS ACTIVATE IT BY
+sudo systemctl daemon-reload
+sudo systemctl enable mlflow-tracking
+sudo systemctl start mlflow-tracking
+CHECK STATUS
+sudo systemctl status mlflow-tracking
+RESTART THE SYSTEM AND RUN THE SERVER
+export MLFLOW_TRACKING_URI='http://0.0.0.0:8000'
+. ~/.bashrc
